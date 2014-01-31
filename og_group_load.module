@@ -1,0 +1,32 @@
+<?php
+/**
+ *
+ * @return multitype:string NULL multitype:multitype:string   multitype:multitype:string NULL
+ */
+function og_group_load_rules_action_info() {
+  $items['og_load_group_load_node'] = array(
+    'label' => t('Load OG Group Node'),
+    'group' => t('Organic groups'),
+    'parameter' => array(
+      'og_membership' => array(
+        'type' => 'og_membership',
+        'label' => t('OG Membership'),
+      ),
+    ),
+    'provides' => array(
+      'og_group_node' => array(
+        'type' => 'node',
+        'label' => 'Group Node'
+      )
+    ),
+    'access callback' => 'og_rules_integration_access',
+  );
+  return $items;
+}
+
+function og_load_group_load_node($og_membership) {
+  //working on assumption we have checked type in our rule @ this stage - even though we get e-notices when we try to add it
+  // to our rule = but hey good news- on our site they always are
+  return array('og_group_node' => node_load($og_membership->gid));
+
+}

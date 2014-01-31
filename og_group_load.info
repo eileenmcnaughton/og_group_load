@@ -1,0 +1,7 @@
+name = Organic groups Load Action
+description = "Adds an action to load the OG group. This is mostly a stop-gap as I could find no way within 'core' OG to load a group & check it's node type. Note that I used this with entity_conditional although it could be used with components"
+package = "Organic groups"
+dependencies[] = og
+dependencies[] = rules
+core = 7.x
+
